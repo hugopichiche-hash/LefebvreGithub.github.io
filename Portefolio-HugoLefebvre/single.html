@@ -200,9 +200,9 @@
   </div>
 
   <div class="form-group">
-    <button type="button" class="btn py-3 px-4 btn-primary" onclick="ajouterCommentaire()">
-      Post Comment
-    </button>
+   <button type="button" class="btn py-3 px-4 btn-primary" onclick="ajouterCommentaire()">
+  Post Comment
+</button>
   </div>
 </form>
 
@@ -374,48 +374,25 @@
   
   <script src="js/main.js"></script>
 
-     <script>
-function ajouterCommentaire() {
-  const nom = document.getElementById("name").value;
-  const message = document.getElementById("message").value;
-
-  if (nom === "" || message === "") {
-    alert("Veuillez remplir tous les champs");
-    return;
-  }
-
-  const date = new Date().toLocaleString();
-
-  const commentaire = `
-    <li class="comment">
-      <div class="vcard bio">
-        <img src="images/person_1.jpg" alt="Image placeholder">
-      </div>
-      <div class="comment-body">
-        <h3>${nom}</h3>
-        <div class="meta">${date}</div>
-        <p>${message}</p>
-      </div>
-    </li>
-  `;
-
-  document.getElementById("commentList").insertAdjacentHTML("beforeend", commentaire);
-
-  // Réinitialiser le formulaire
-  document.getElementById("name").value = "";
-  document.getElementById("message").value = "";
-}
-</script>
+ <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
 
 <script>
-  // 1. Configuration Firebase
+  // 1️⃣ Configuration Firebase complète
   const firebaseConfig = {
-    databaseURL: "https://portefolio-4e1d0-default-rtdb.firebaseio.com/"
+    apiKey: "API_KEY",
+    authDomain: "portefolio-4e1d0.firebaseapp.com",
+    databaseURL: "https://portefolio-4e1d0-default-rtdb.firebaseio.com",
+    projectId: "portefolio-4e1d0",
+    storageBucket: "portefolio-4e1d0.appspot.com",
+    messagingSenderId: "SENDER_ID",
+    appId: "APP_ID"
   };
   firebase.initializeApp(firebaseConfig);
   const database = firebase.database();
 
-  // 2. Authentification anonyme
+  // 2️⃣ Authentification anonyme
   firebase.auth().signInAnonymously()
     .then(() => {
       console.log("Utilisateur connecté anonymement");
@@ -424,10 +401,10 @@ function ajouterCommentaire() {
       console.error("Erreur d'authentification :", error);
     });
 
-  // 3. Ajouter un commentaire
+  // 3️⃣ Ajouter un commentaire
   function ajouterCommentaire() {
-    const nom = document.getElementById("name").value;
-    const message = document.getElementById("message").value;
+    const nom = document.getElementById("name").value.trim();
+    const message = document.getElementById("message").value.trim();
 
     if (!nom || !message) {
       alert("Veuillez remplir tous les champs");
@@ -437,7 +414,6 @@ function ajouterCommentaire() {
     const date = new Date().toLocaleString();
     const commentairesRef = database.ref("commentaires");
 
-    // Vérifier que l'utilisateur est connecté avant d'ajouter
     if (firebase.auth().currentUser) {
       commentairesRef.push({ nom, message, date })
         .then(() => {
@@ -451,7 +427,7 @@ function ajouterCommentaire() {
     }
   }
 
-  // 4. Charger les commentaires
+  // 4️⃣ Charger les commentaires depuis Firebase
   function chargerCommentaires() {
     const commentairesRef = database.ref("commentaires");
     commentairesRef.on("value", snapshot => {
@@ -481,7 +457,10 @@ function ajouterCommentaire() {
     });
   }
 
+  // Charger les commentaires dès que la page est prête
   chargerCommentaires();
 </script>
+
+	  
   </body>
 </html>
