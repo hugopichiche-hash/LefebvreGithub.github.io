@@ -406,18 +406,15 @@ function ajouterCommentaire() {
 }
 </script>
 
-	  <script>
-  // Configuration Firebase
+<script>
+  // 1. Configuration Firebase
   const firebaseConfig = {
     databaseURL: "https://portefolio-4e1d0-default-rtdb.firebaseio.com/"
   };
-
-  // Initialiser Firebase
   firebase.initializeApp(firebaseConfig);
-
   const database = firebase.database();
 
-  // Authentification anonyme
+  // 2. Authentification anonyme
   firebase.auth().signInAnonymously()
     .then(() => {
       console.log("Utilisateur connecté anonymement");
@@ -426,15 +423,44 @@ function ajouterCommentaire() {
       console.error("Erreur d'authentification :", error);
     });
 
-  // Charger les commentaires depuis Firebase
+  // 3. Ajouter un commentaire
+  function ajouterCommentaire() {
+    const nom = document.getElementById("name").value;
+    const message = document.getElementById("message").value;
+
+    if (!nom || !message) {
+      alert("Veuillez remplir tous les champs");
+      return;
+    }
+
+    const date = new Date().toLocaleString();
+    const commentairesRef = database.ref("commentaires");
+
+    // Vérifier que l'utilisateur est connecté avant d'ajouter
+    if (firebase.auth().currentUser) {
+      commentairesRef.push({ nom, message, date })
+        .then(() => {
+          console.log("Commentaire ajouté !");
+          document.getElementById("name").value = "";
+          document.getElementById("message").value = "";
+        })
+        .catch(error => console.error("Erreur lors de l'ajout :", error));
+    } else {
+      alert("Impossible de poster : utilisateur non authentifié");
+    }
+  }
+
+  // 4. Charger les commentaires
   function chargerCommentaires() {
     const commentairesRef = database.ref("commentaires");
-    commentairesRef.on("value", (snapshot) => {
-      const commentaires = snapshot.val();
+    commentairesRef.on("value", snapshot => {
+      const commentaires = snapshot.val() || {};
       const liste = document.getElementById("commentList");
-      liste.innerHTML = ""; // réinitialiser
+      liste.innerHTML = "";
+      let count = 0;
       for (let id in commentaires) {
         const c = commentaires[id];
+        count++;
         const commentaireHTML = `
           <li class="comment">
             <div class="vcard bio">
@@ -446,82 +472,15 @@ function ajouterCommentaire() {
               <p>${c.message}</p>
             </div>
           </li>
-		  function chargerCommentaires() {
-  const commentairesRef = database.ref("commentaires");
-  commentairesRef.on("value", snapshot => {
-    const commentaires = snapshot.val() || {};
-    const liste = document.getElementById("commentList");
-    liste.innerHTML = ""; // réinitialiser
-
-    let count = 0;
-    for (let id in commentaires) {
-      const c = commentaires[id];
-      count++;
-
-      const commentaireHTML = `
-        <li class="comment">
-          <div class="vcard bio">
-            <img src="images/person_1.jpg" alt="Image placeholder">
-          </div>
-          <div class="comment-body">
-            <h3>${c.nom}</h3>
-            <div class="meta">${c.date}</div>
-            <p>${c.message}</p>
-          </div>
-        </li>
-      `;
-      liste.insertAdjacentHTML("beforeend", commentaireHTML);
-    }
-
-    // Mettre à jour le compteur
-    const compteur = document.getElementById("commentCounter");
-    if (compteur) {
-      compteur.textContent = count + " Comment" + (count > 1 ? "s" : "");
-    }
-  });
-}
         `;
         liste.insertAdjacentHTML("beforeend", commentaireHTML);
       }
+      document.getElementById("commentCounter").textContent =
+        count + " Comment" + (count > 1 ? "s" : "");
     });
   }
+
   chargerCommentaires();
 </script>
-
-<script>
-function ajouterCommentaire() {
-  const nom = document.getElementById("name").value;
-  const message = document.getElementById("message").value;
-
-  if (nom === "" || message === "") {
-    alert("Veuillez remplir tous les champs");
-    return;
-  }
-
-  const date = new Date().toLocaleString();
-
-  // Référence à la collection 'commentaires'
-  const commentairesRef = database.ref("commentaires");
-
-  // Ajouter le commentaire à Firebase
-  const nouveauCommentaireRef = commentairesRef.push();
-  nouveauCommentaireRef.set({
-    nom: nom,
-    message: message,
-    date: date
-  })
-  .then(() => {
-    console.log("Commentaire ajouté !");
-    // Réinitialiser le formulaire
-    document.getElementById("name").value = "";
-    document.getElementById("message").value = "";
-  })
-  .catch((error) => {
-    console.error("Erreur lors de l'ajout :", error);
-  });
-}
-</script>
-	  
-    
   </body>
 </html>
