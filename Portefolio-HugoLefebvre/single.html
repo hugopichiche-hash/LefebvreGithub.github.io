@@ -379,29 +379,30 @@
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
 
 <script>
-  // 1️⃣ Configuration Firebase complète
+  // 1. Configuration Firebase
   const firebaseConfig = {
-    apiKey: "API_KEY",
-    authDomain: "portefolio-4e1d0.firebaseapp.com",
-    databaseURL: "https://portefolio-4e1d0-default-rtdb.firebaseio.com",
-    projectId: "portefolio-4e1d0",
-    storageBucket: "portefolio-4e1d0.appspot.com",
-    messagingSenderId: "SENDER_ID",
-    appId: "APP_ID"
+    databaseURL: "https://portefolio-4e1d0-default-rtdb.firebaseio.com/"
   };
   firebase.initializeApp(firebaseConfig);
   const database = firebase.database();
 
-  // 2️⃣ Authentification anonyme
+  // 2. Variable pour suivre l'authentification
+  let utilisateurConnecte = false;
+
+  // 3. Authentification anonyme et suivi de l'état
   firebase.auth().signInAnonymously()
-    .then(() => {
-      console.log("Utilisateur connecté anonymement");
-    })
     .catch((error) => {
       console.error("Erreur d'authentification :", error);
     });
 
-  // 3️⃣ Ajouter un commentaire
+  firebase.auth().onAuthStateChanged(user => {
+    if (user) {
+      utilisateurConnecte = true;
+      console.log("Utilisateur connecté :", user.uid);
+    }
+  });
+
+  // 4. Ajouter un commentaire
   function ajouterCommentaire() {
     const nom = document.getElementById("name").value.trim();
     const message = document.getElementById("message").value.trim();
@@ -411,30 +412,33 @@
       return;
     }
 
+    if (!utilisateurConnecte) {
+      alert("Impossible de poster : utilisateur non authentifié");
+      return;
+    }
+
     const date = new Date().toLocaleString();
     const commentairesRef = database.ref("commentaires");
 
-    if (firebase.auth().currentUser) {
-      commentairesRef.push({ nom, message, date })
-        .then(() => {
-          console.log("Commentaire ajouté !");
-          document.getElementById("name").value = "";
-          document.getElementById("message").value = "";
-        })
-        .catch(error => console.error("Erreur lors de l'ajout :", error));
-    } else {
-      alert("Impossible de poster : utilisateur non authentifié");
-    }
+    commentairesRef.push({ nom, message, date })
+      .then(() => {
+        console.log("Commentaire ajouté !");
+        document.getElementById("name").value = "";
+        document.getElementById("message").value = "";
+      })
+      .catch(error => console.error("Erreur lors de l'ajout :", error));
   }
 
-  // 4️⃣ Charger les commentaires depuis Firebase
+  // 5. Charger les commentaires depuis Firebase
   function chargerCommentaires() {
     const commentairesRef = database.ref("commentaires");
+
     commentairesRef.on("value", snapshot => {
       const commentaires = snapshot.val() || {};
       const liste = document.getElementById("commentList");
       liste.innerHTML = "";
       let count = 0;
+
       for (let id in commentaires) {
         const c = commentaires[id];
         count++;
@@ -452,12 +456,13 @@
         `;
         liste.insertAdjacentHTML("beforeend", commentaireHTML);
       }
+
       document.getElementById("commentCounter").textContent =
         count + " Comment" + (count > 1 ? "s" : "");
     });
   }
 
-  // Charger les commentaires dès que la page est prête
+  // 6. Lancer le chargement des commentaires au démarrage
   chargerCommentaires();
 </script>
 
