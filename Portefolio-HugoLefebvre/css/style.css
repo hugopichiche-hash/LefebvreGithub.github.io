@@ -62,6 +62,23 @@ body {
 [tabindex="-1"]:focus {
   outline: 0 !important; }
 
+.menu-close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 32px;
+  color: #fff;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.menu-close:hover {
+  color: #fdb827;
+}
+
+
 hr {
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
