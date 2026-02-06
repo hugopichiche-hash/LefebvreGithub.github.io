@@ -9699,3 +9699,16 @@ textarea.form-control {
   100% {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -136px; } }
+
+/* Annule le style bleu et souligné pour le lien du titre */
+.link-style {
+    color: inherit;            /* Prend la couleur du <h3> (probablement blanc) */
+    text-decoration: none;     /* Enlève le soulignement */
+    display: block;            /* Permet de cliquer sur toute la zone du titre */
+}
+
+/* Optionnel : Si vous voulez que la couleur change légèrement au survol */
+.link-style:hover {
+    color: #ffbd39;            /* La couleur orange de votre thème au survol */
+    text-decoration: none;
+}
