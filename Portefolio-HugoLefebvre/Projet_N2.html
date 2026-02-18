@@ -37,17 +37,37 @@
 	      </div>
 	    </div>
 	  </nav>
-	  <section class="hero-wrap js-fullheight" style="background-image: url('images/video_surveiller.mp4');" data-stellar-background-ratio="0.5">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
-          <div class="col-md-12 ftco-animate pb-5 mb-3 text-center">
-            <h1 class="mb-3 bread" id="journal">Mon Projet</h1>
-            <p class="breadcrumbs"><span class="mr-2"><a href="index.html" onclick="event.preventDefault();">Accueil <i class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a href="blog.html" onclick="event.preventDefault();">Mon Journal <i class="ion-ios-arrow-forward"></i></a></span> <span onclick="event.preventDefault();">Ma personne ... <i class="ion-ios-arrow-forward"></i></span></p>
-          </div>
+	  <section class="hero-wrap js-fullheight" style="position: relative; overflow: hidden;">
+    <video autoplay muted loop playsinline style="
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        z-index: 0;
+        transform: translate(-50%, -50%);
+        object-fit: cover;">
+        <source src="images/video_surveiller.mp4" type="video/mp4">
+        Votre navigateur ne supporte pas la vidéo.
+    </video>
+
+    <div class="overlay" style="z-index: 1;"></div>
+
+    <div class="container" style="z-index: 2; position: relative;">
+      <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
+        <div class="col-md-12 ftco-animate pb-5 mb-3 text-center">
+          <h1 class="mb-3 bread" id="journal">Mon Projet</h1>
+          <p class="breadcrumbs">
+            <span class="mr-2"><a href="index.html" onclick="event.preventDefault();">Accueil <i class="ion-ios-arrow-forward"></i></a></span> 
+            <span class="mr-2"><a href="blog.html" onclick="event.preventDefault();">Mon Journal <i class="ion-ios-arrow-forward"></i></a></span> 
+            <span onclick="event.preventDefault();">Ma personne ... <i class="ion-ios-arrow-forward"></i></span>
+          </p>
         </div>
       </div>
-    </section>
+    </div>
+</section>
 
     <section class="ftco-section">
       <div class="container">
@@ -219,6 +239,7 @@
   </body>
 
 </html>
+
 
 
 
