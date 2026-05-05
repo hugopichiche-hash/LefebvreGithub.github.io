@@ -42,25 +42,52 @@
 
 
 
-   // Burger Menu
-	var burgerMenu = function() {
+  var burgerMenu = function() {
 
-		$('body').on('click', '.js-fh5co-nav-toggle', function(event){
+    // Bouton burger → ouvre le menu
+    $('body').on('click', '.js-fh5co-nav-toggle', function(event){
+        event.preventDefault();
+        $(this).addClass('active');
+        $('#ftco-nav').collapse('show');
+    });
 
-			event.preventDefault();
+    // Bouton croix → ferme et affiche la flèche
+    $('body').on('click', '.menu-close', function(event){
+        event.preventDefault();
+        event.stopPropagation();
+        $('#ftco-nav').collapse('hide');
+        $('.js-fh5co-nav-toggle').removeClass('active').hide();
+        $('#menu-reopen').show();
+    });
 
-			if ( $('#ftco-nav').is(':visible') ) {
-				$(this).removeClass('active');
-			} else {
-				$(this).addClass('active');	
-			}
+    // Créer le bouton flèche une seule fois
+    if ($('#menu-reopen').length === 0) {
+        var $arrow = $('<button id="menu-reopen">&#9776;</button>').css({
+            display: 'none',
+            position: 'fixed',
+            top: '12px',
+            right: '16px',
+            zIndex: 9999,
+            background: 'rgba(0,0,0,0.6)',
+            border: '1px solid rgba(255,255,255,0.3)',
+            color: '#fff',
+            fontSize: '20px',
+            padding: '4px 10px',
+            borderRadius: '6px',
+            cursor: 'pointer'
+        });
+        $('body').append($arrow);
+    }
 
-			
-			
-		});
+    // Bouton flèche → rouvre le menu
+    $('body').on('click', '#menu-reopen', function(){
+        $(this).hide();
+        $('.js-fh5co-nav-toggle').show();
+        $('#ftco-nav').collapse('show');
+    });
 
-	};
-	burgerMenu();
+};
+burgerMenu();
 
 
 	var onePageClick = function() {
