@@ -271,48 +271,6 @@
 
 
 
-<script>
-  // Toggle menu: croix → flèche, flèche → menu
-  (function() {
-    var toggler = document.querySelector('.js-fh5co-nav-toggle');
-    var closeBtn = document.querySelector('.menu-close');
-    var navCollapse = document.getElementById('ftco-nav');
-
-    // Créer le bouton flèche
-    var arrowBtn = document.createElement('button');
-    arrowBtn.id = 'menu-arrow-toggle';
-    arrowBtn.innerHTML = '&#9776;';
-    arrowBtn.setAttribute('type', 'button');
-    arrowBtn.style.cssText = 'display:none; position:fixed; top:14px; right:16px; z-index:9999; background:transparent; border:none; color:#fff; font-size:22px; cursor:pointer;';
-    document.body.appendChild(arrowBtn);
-
-    function closeMenu() {
-      $(navCollapse).collapse('hide');
-      toggler.style.display = 'none';
-      arrowBtn.style.display = 'block';
-    }
-
-    function openMenu() {
-      $(navCollapse).collapse('show');
-      toggler.style.display = '';
-      arrowBtn.style.display = 'none';
-    }
-
-    if (closeBtn) {
-      closeBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        closeMenu();
-      });
-    }
-
-    arrowBtn.addEventListener('click', function() {
-      openMenu();
-    });
-  })();
-</script>
-
-
-
 
 
 })(jQuery);
