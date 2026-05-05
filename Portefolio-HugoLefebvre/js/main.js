@@ -42,7 +42,7 @@
 
 
 
- var burgerMenu = function() {
+var burgerMenu = function() {
 
     // Créer le bouton flèche une seule fois
     if ($('#menu-reopen').length === 0) {
@@ -63,26 +63,25 @@
         $('body').append($arrow);
     }
 
-    // Bouton burger (mobile) → ouvre
+    // Bouton burger → ouvre (mobile)
     $('body').on('click', '.js-fh5co-nav-toggle', function(event){
         event.preventDefault();
         $(this).addClass('active');
         $('#ftco-nav').collapse('show');
     });
 
-    // Bouton croix → cache la navbar entière et affiche la flèche
+    // Bouton croix → cache navbar + affiche flèche
     $('body').on('click', '.menu-close', function(event){
         event.preventDefault();
         event.stopPropagation();
-        // Cache toute la barre de navigation
-        $('#ftco-navbar').hide();
+        $('#ftco-navbar').fadeOut(200);
         $('#menu-reopen').show();
     });
 
-    // Bouton flèche → reaffiche la navbar
+    // Flèche → reaffiche navbar
     $('body').on('click', '#menu-reopen', function(){
         $(this).hide();
-        $('#ftco-navbar').show();
+        $('#ftco-navbar').fadeIn(200);
     });
 
 };
