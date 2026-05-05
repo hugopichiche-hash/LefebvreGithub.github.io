@@ -42,23 +42,7 @@
 
 
 
-  var burgerMenu = function() {
-
-    // Bouton burger → ouvre le menu
-    $('body').on('click', '.js-fh5co-nav-toggle', function(event){
-        event.preventDefault();
-        $(this).addClass('active');
-        $('#ftco-nav').collapse('show');
-    });
-
-    // Bouton croix → ferme et affiche la flèche
-    $('body').on('click', '.menu-close', function(event){
-        event.preventDefault();
-        event.stopPropagation();
-        $('#ftco-nav').collapse('hide');
-        $('.js-fh5co-nav-toggle').removeClass('active').hide();
-        $('#menu-reopen').show();
-    });
+ var burgerMenu = function() {
 
     // Créer le bouton flèche une seule fois
     if ($('#menu-reopen').length === 0) {
@@ -79,16 +63,30 @@
         $('body').append($arrow);
     }
 
-    // Bouton flèche → rouvre le menu
+    // Bouton burger (mobile) → ouvre
+    $('body').on('click', '.js-fh5co-nav-toggle', function(event){
+        event.preventDefault();
+        $(this).addClass('active');
+        $('#ftco-nav').collapse('show');
+    });
+
+    // Bouton croix → cache la navbar entière et affiche la flèche
+    $('body').on('click', '.menu-close', function(event){
+        event.preventDefault();
+        event.stopPropagation();
+        // Cache toute la barre de navigation
+        $('#ftco-navbar').hide();
+        $('#menu-reopen').show();
+    });
+
+    // Bouton flèche → reaffiche la navbar
     $('body').on('click', '#menu-reopen', function(){
         $(this).hide();
-        $('.js-fh5co-nav-toggle').show();
-        $('#ftco-nav').collapse('show');
+        $('#ftco-navbar').show();
     });
 
 };
 burgerMenu();
-
 
 	var onePageClick = function() {
 
