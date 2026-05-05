@@ -720,48 +720,6 @@
   <script src="js/main.js"></script>
 
 
-<script>
-(function() {
-  var closeBtn = document.querySelector('.menu-close');
-  var toggler = document.querySelector('.js-fh5co-nav-toggle');
-  var navCollapse = document.getElementById('ftco-nav');
-
-  // Créer le bouton flèche
-  var arrowBtn = document.createElement('button');
-  arrowBtn.id = 'menu-reopen';
-  arrowBtn.innerHTML = '&#9776;';
-  arrowBtn.style.cssText = [
-    'display: none',
-    'position: fixed',
-    'top: 12px',
-    'right: 16px',
-    'z-index: 9999',
-    'background: rgba(0,0,0,0.5)',
-    'border: 1px solid rgba(255,255,255,0.3)',
-    'color: #fff',
-    'font-size: 20px',
-    'padding: 4px 10px',
-    'border-radius: 6px',
-    'cursor: pointer'
-  ].join(';');
-  document.body.appendChild(arrowBtn);
-
-  // Fermer → affiche la flèche
-  if (closeBtn) {
-    closeBtn.addEventListener('click', function() {
-      toggler.style.display = 'none';
-      arrowBtn.style.display = 'block';
-    });
-  }
-
-  // Flèche → rouvre le menu
-  arrowBtn.addEventListener('click', function() {
-    arrowBtn.style.display = 'none';
-    toggler.style.display = '';
-    $(navCollapse).collapse('show');
-  });
-})();
-</script>
 
 
 
