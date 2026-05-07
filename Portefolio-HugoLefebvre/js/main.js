@@ -42,50 +42,7 @@
 
 
 
-var burgerMenu = function() {
 
-    // Créer le bouton flèche une seule fois
-    if ($('#menu-reopen').length === 0) {
-        var $arrow = $('<button id="menu-reopen">&#9776;</button>').css({
-            display: 'none',
-            position: 'fixed',
-            top: '12px',
-            right: '16px',
-            zIndex: 9999,
-            background: 'rgba(0,0,0,0.6)',
-            border: '1px solid rgba(255,255,255,0.3)',
-            color: '#fff',
-            fontSize: '20px',
-            padding: '4px 10px',
-            borderRadius: '6px',
-            cursor: 'pointer'
-        });
-        $('body').append($arrow);
-    }
-
-    // Bouton burger → ouvre (mobile)
-    $('body').on('click', '.js-fh5co-nav-toggle', function(event){
-        event.preventDefault();
-        $(this).addClass('active');
-        $('#ftco-nav').collapse('show');
-    });
-
-    // Bouton croix → cache navbar + affiche flèche
-    $('body').on('click', '.menu-close', function(event){
-        event.preventDefault();
-        event.stopPropagation();
-        $('#ftco-navbar').fadeOut(200);
-        $('#menu-reopen').show();
-    });
-
-    // Flèche → reaffiche navbar
-    $('body').on('click', '#menu-reopen', function(){
-        $(this).hide();
-        $('#ftco-navbar').fadeIn(200);
-    });
-
-};
-burgerMenu();
 
 	var onePageClick = function() {
 
