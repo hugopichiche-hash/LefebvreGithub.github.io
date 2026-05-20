@@ -4,109 +4,117 @@
     <title>Hugo_Portfolio</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-
     <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
     <link rel="stylesheet" href="css/animate.css">
-    
     <link rel="stylesheet" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/owl.theme.default.min.css">
     <link rel="stylesheet" href="css/magnific-popup.css">
-
     <link rel="stylesheet" href="css/aos.css">
-
     <link rel="stylesheet" href="css/ionicons.min.css">
-    
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
+    <style>
+      /* ── Bouton langue ── */
+      #lang-btn {
+        position: fixed;
+        top: 16px;
+        right: 20px;
+        z-index: 9999;
+        background: #fff;
+        color: #333;
+        border: 1.5px solid #ddd;
+        border-radius: 6px;
+        padding: 6px 14px;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        letter-spacing: 0.05em;
+        transition: background 0.2s, color 0.2s;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      }
+      #lang-btn:hover { background: #f0f0f0; }
+
+      /* ── Hero réduit ── */
+      .hero .slider-item {
+        min-height: 65vh !important;
+        height: 65vh !important;
+      }
+      .hero .one-third {
+        min-height: 65vh !important;
+        height: 65vh !important;
+      }
+      .home-slider { min-height: 65vh !important; }
+
+      /* ── Responsive ── */
+      @media (max-width: 991px) {
+        .hero .slider-item, .hero .one-third, .home-slider { min-height: 55vh !important; height: 55vh !important; }
+        .one-third { display: none !important; }
+        .one-forth { width: 100% !important; max-width: 100% !important; padding: 40px 20px !important; }
+      }
+      @media (max-width: 768px) {
+        .hero .slider-item, .hero .one-third, .home-slider { min-height: 50vh !important; height: 50vh !important; }
+        h1.big, h1.big.big-2 { font-size: 48px !important; }
+        .ftco-section { padding: 3rem 0 !important; }
+        .resume-wrap { margin-bottom: 20px; }
+        .project.img { min-height: 180px !important; }
+        #lang-btn { top: 12px; right: 12px; font-size: 12px; padding: 5px 10px; }
+        .col-md-4, .col-md-8 { margin-bottom: 16px; }
+        .block-18 { margin-bottom: 16px; }
+        .services-1 { min-height: 180px !important; }
+      }
+      @media (max-width: 480px) {
+        h1 { font-size: 26px !important; }
+        h2 { font-size: 18px !important; }
+        .btn { font-size: 13px !important; padding: 10px 16px !important; }
+        .counter-wrap { margin-bottom: 16px; }
+      }
+    </style>
   </head>
   <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
-    
+
+    <!-- Bouton langue -->
+    <button id="lang-btn" onclick="toggleLang()">EN</button>
+
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light site-navbar-target" id="ftco-navbar">
       <div class="container">
         <a class="navbar-brand" href="index.html">Hugo</a>
         <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="oi oi-menu"></span> Menu
         </button>
-
         <div class="collapse navbar-collapse" id="ftco-nav">
-
-
-          
           <ul class="navbar-nav nav ml-auto">
-            <li class="nav-item"><a href="#home-section" class="nav-link"><span>Accueil</span></a></li>
-            <li class="nav-item"><a href="#about-section" class="nav-link"><span>À propos</span></a></li>
-            <li class="nav-item"><a href="#resume-section" class="nav-link"><span>CV</span></a></li>
-            <li class="nav-item"><a href="#services-section" class="nav-link"><span>Services</span></a></li>
-            <li class="nav-item"><a href="#skills-section" class="nav-link"><span>Compétences</span></a></li>
-            <li class="nav-item"><a href="#projects-section" class="nav-link"><span>Projets</span></a></li>
-            <li class="nav-item"><a href="#blog-section" class="nav-link"><span>Mon Journal</span></a></li>
-            <li class="nav-item"><a href="#contact-section" class="nav-link"><span>Mes contacts</span></a></li>
+            <li class="nav-item"><a href="#home-section" class="nav-link"><span id="nav-accueil">Accueil</span></a></li>
+            <li class="nav-item"><a href="#about-section" class="nav-link"><span id="nav-apropos">À propos</span></a></li>
+            <li class="nav-item"><a href="#resume-section" class="nav-link"><span id="nav-cv">CV</span></a></li>
+            <li class="nav-item"><a href="#services-section" class="nav-link"><span id="nav-services">Services</span></a></li>
+            <li class="nav-item"><a href="#skills-section" class="nav-link"><span id="nav-competences">Compétences</span></a></li>
+            <li class="nav-item"><a href="#projects-section" class="nav-link"><span id="nav-projets">Projets</span></a></li>
+            <li class="nav-item"><a href="#blog-section" class="nav-link"><span id="nav-journal">Mon Journal</span></a></li>
+            <li class="nav-item"><a href="#contact-section" class="nav-link"><span id="nav-contact">Mes contacts</span></a></li>
           </ul>
         </div>
       </div>
     </nav>
-   <section id="home-section" class="hero">
-  <div class="home-slider">
-    <div class="slider-item">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row d-md-flex no-gutters slider-text align-items-end justify-content-end" data-scrollax-parent="true">
-          <div class="one-third js-fullheight order-md-last img" style="background-image:url(images/bg_1.png);">
-            <div class="overlay"></div>
-          </div>
-          <div class="one-forth d-flex align-items-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-            <div class="text">
-              <span class="subheading">Bonjour !</span>
-              <h1 class="mb-4 mt-3">Je suis <span>Hugo Lefebvre</span></h1>
-              <h2 class="mb-4">Étudiant à l'IUT de Béthune en Réseaux et Télécommunications</h2>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-    
-    
-    <section class="ftco-about img ftco-section ftco-no-pb" id="about-section">
-      <div class="container">
-        <div class="row d-flex">
-          <div class="col-md-6 col-lg-5 d-flex">
-            <div class="img-about img d-flex align-items-stretch">
-              <div class="overlay"></div>
-              <div class="img d-flex align-self-stretch align-items-center" style="background-image:url(images/bg_1.png);">
+    <section id="home-section" class="hero">
+      <div class="home-slider">
+        <div class="slider-item">
+          <div class="overlay"></div>
+          <div class="container">
+            <div class="row d-md-flex no-gutters slider-text align-items-end justify-content-end" data-scrollax-parent="true">
+              <div class="one-third js-fullheight order-md-last img" style="background-image:url(images/bg_1.png);">
+                <div class="overlay"></div>
               </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-7 pl-lg-5 pb-5">
-            <div class="row justify-content-start pb-3">
-              <div class="col-md-12 heading-section ftco-animate">
-                <h1 class="big">À propos</h1>
-                <h2 class="mb-4">À propos de moi</h2>
-                <p>Je suis une personne engagée, compétente et déterminée à réussir, car ce domaine me passionne et je cherche toujours à me surpasser pour donner le meilleur de moi-même</p>
-                <ul class="about-info mt-4 px-md-0 px-2">
-                  <li class="d-flex"><span>Nom :</span> <span>Hugo Lefebvre</span></li>
-                  <li class="d-flex"><span>Date de naissance :</span> <span>20 Juin 2007</span></li>
-                  <li class="d-flex"><span>Adresse :</span> <span>7 rue Roger Bossaert, Grenay</span></li>
-                  <li class="d-flex"><span>Email :</span> <span>hugopichiche@gmail.com</span></li>
-                  <li class="d-flex"><span>Tél :</span> <span>+33 06 47 41 11 25</span></li>
-                </ul>
-              </div>
-            </div>
-            <div class="counter-wrap ftco-animate d-flex mt-md-3">
-              <div class="text">
-                <p class="mb-4">
-                  <span class="number" data-number="11">0</span>
-                  <span>Projets accomplis</span>
-                </p>
-                <p><a href="cv/CV_2026_Lefebvre_Hugo.pdf" class="btn btn-primary py-3 px-3" download>Télécharger mon CV</a></p>
+              <div class="one-forth d-flex align-items-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+                <div class="text">
+                  <span class="subheading" id="hero-hello">Bonjour !</span>
+                  <h1 class="mb-4 mt-3">Je suis <span>Hugo Lefebvre</span></h1>
+                  <h2 class="mb-4" id="hero-subtitle">Étudiant à l'IUT de Béthune en Réseaux et Télécommunications</h2>
+                </div>
               </div>
             </div>
           </div>
@@ -114,15 +122,51 @@
       </div>
     </section>
 
+    <section class="ftco-about img ftco-section ftco-no-pb" id="about-section">
+      <div class="container">
+        <div class="row d-flex">
+          <div class="col-md-6 col-lg-5 d-flex">
+            <div class="img-about img d-flex align-items-stretch">
+              <div class="overlay"></div>
+              <div class="img d-flex align-self-stretch align-items-center" style="background-image:url(images/bg_1.png);"></div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-7 pl-lg-5 pb-5">
+            <div class="row justify-content-start pb-3">
+              <div class="col-md-12 heading-section ftco-animate">
+                <h1 class="big" id="about-big">À propos</h1>
+                <h2 class="mb-4" id="about-title">À propos de moi</h2>
+                <p id="about-desc">Je suis une personne engagée, compétente et déterminée à réussir, car ce domaine me passionne et je cherche toujours à me surpasser pour donner le meilleur de moi-même</p>
+                <ul class="about-info mt-4 px-md-0 px-2">
+                  <li class="d-flex"><span id="about-nom">Nom :</span> <span>Hugo Lefebvre</span></li>
+                  <li class="d-flex"><span id="about-dob">Date de naissance :</span> <span>20 Juin 2007</span></li>
+                  <li class="d-flex"><span id="about-addr-label">Adresse :</span> <span>7 rue Roger Bossaert, Grenay</span></li>
+                  <li class="d-flex"><span id="about-email-label">Email :</span> <span>hugopichiche@gmail.com</span></li>
+                  <li class="d-flex"><span id="about-tel-label">Tél :</span> <span>+33 06 47 41 11 25</span></li>
+                </ul>
+              </div>
+            </div>
+            <div class="counter-wrap ftco-animate d-flex mt-md-3">
+              <div class="text">
+                <p class="mb-4">
+                  <span class="number" data-number="11">0</span>
+                  <span id="about-projects">Projets accomplis</span>
+                </p>
+                <p><a href="cv/CV_2026_Lefebvre_Hugo.pdf" class="btn btn-primary py-3 px-3 btn-dl-cv" download>Télécharger mon CV</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    
     <section class="ftco-section ftco-no-pb" id="resume-section">
       <div class="container">
         <div class="row justify-content-center pb-5">
           <div class="col-md-10 heading-section text-center ftco-animate">
-            <h1 class="big big-2">Résumé</h1>
-            <h2 class="mb-4">CV</h2>
-            <p>J'ai, durant mon parcours, accompli plusieurs types de projets qui m'ont permis d'acquérir de réelles compétences concrètes.</p>
+            <h1 class="big big-2" id="resume-big">Résumé</h1>
+            <h2 class="mb-4" id="resume-title">CV</h2>
+            <p id="resume-desc">J'ai, durant mon parcours, accompli plusieurs types de projets qui m'ont permis d'acquérir de réelles compétences concrètes.</p>
           </div>
         </div>
         <div class="row">
@@ -146,18 +190,16 @@
               <p class="mt-4">Pendant cette formation, j'ai appris à savoir réagir et secourir une personne en situation de danger.</p>
             </div>
           </div>
-
-        
           <div class="col-md-6">
             <div class="resume-wrap ftco-animate">
               <span class="date">2025-2026</span>
-              <h2> Étudiant </h2>
+              <h2>Étudiant</h2>
               <span class="position">IUT de Béthune</span>
               <p class="mt-4">Pendant cette formation, j'apprends plusieurs domaines dans la branche des Réseaux et Télécommunications, tout comme Administrer, Connecter, Programmer, Sécuriser mais aussi Surveiller.</p>
             </div>
             <div class="resume-wrap ftco-animate">
               <span class="date">2025-2026</span>
-              <h2>Certification CISCO </h2>
+              <h2>Certification CISCO</h2>
               <span class="position">IUT de Béthune</span>
               <p class="mt-4">Avec cette formation, j'ai pu développer mes compétences dans le langage de programmation Python.</p>
             </div>
@@ -171,7 +213,7 @@
         </div>
         <div class="row justify-content-center mt-5">
           <div class="col-md-6 text-center ftco-animate">
-            <p><a href="cv/CV_2026_Lefebvre_Hugo.pdf" class="btn btn-primary py-4 px-5" download>Télécharger mon CV</a></p>
+            <p><a href="cv/CV_2026_Lefebvre_Hugo.pdf" class="btn btn-primary py-4 px-5 btn-dl-cv" download>Télécharger mon CV</a></p>
           </div>
         </div>
       </div>
@@ -181,87 +223,59 @@
       <div class="container">
         <div class="row justify-content-center py-5 mt-5">
           <div class="col-md-12 heading-section text-center ftco-animate">
-            <h1 class="big big-2">Services</h1>
-            <h2 class="mb-4">Services</h2>
-            <p>Je propose plusieurs types de services qui sont très utiles pour concrétiser vos projets et vos besoins.</p>
+            <h1 class="big big-2" id="services-big">Services</h1>
+            <h2 class="mb-4" id="services-title">Services</h2>
+            <p id="services-desc">Je propose plusieurs types de services qui sont très utiles pour concrétiser vos projets et vos besoins.</p>
           </div>
         </div>
         <div class="row">
           <div class="col-md-4 text-center d-flex ftco-animate">
             <a href="Projet_N1.html" class="services-1">
-              <span class="icon">
-                <i class="flaticon-analysis"></i>
-              </span>
-              <div class="desc">
-                <h3 class="mb-5">Programmer</h3>
-              </div>
+              <span class="icon"><i class="flaticon-analysis"></i></span>
+              <div class="desc"><h3 class="mb-5" id="svc-1">Programmer</h3></div>
             </a>
           </div>
           <div class="col-md-4 text-center d-flex ftco-animate">
-            <a href="Projet_N2.html" class="services-1" >
-              <span class="icon">
-                <i class="flaticon-flasks"></i>
-              </span>
-              <div class="desc">
-                <h3 class="mb-5">Connecter</h3>
-              </div>
+            <a href="Projet_N2.html" class="services-1">
+              <span class="icon"><i class="flaticon-flasks"></i></span>
+              <div class="desc"><h3 class="mb-5" id="svc-2">Connecter</h3></div>
             </a>
           </div>
           <div class="col-md-4 text-center d-flex ftco-animate">
-            <a href="Projet_N3.html" class="services-1" >
-              <span class="icon">
-                <i class="flaticon-ideas"></i>
-              </span>
-              <div class="desc">
-                <h3 class="mb-5">Administrer</h3>
-              </div>
-            </a>
-          </div>
-
-          
-          <div class="col-md-4 text-center d-flex ftco-animate">
-            <a href="Projet_N4.html" class="services-1" >
-              <span class="icon">
-                <i class="flaticon-analysis"></i>
-              </span>
-              <div class="desc">
-                <h3 class="mb-5">Surveiller</h3>
-              </div>
+            <a href="Projet_N3.html" class="services-1">
+              <span class="icon"><i class="flaticon-ideas"></i></span>
+              <div class="desc"><h3 class="mb-5" id="svc-3">Administrer</h3></div>
             </a>
           </div>
           <div class="col-md-4 text-center d-flex ftco-animate">
-            <a href="Projet_N5.html" class="services-1" >
-              <span class="icon">
-                <i class="flaticon-flasks"></i>
-              </span>
-              <div class="desc">
-                <h3 class="mb-5">Sécuriser</h3>
-              </div>
+            <a href="Projet_N4.html" class="services-1">
+              <span class="icon"><i class="flaticon-analysis"></i></span>
+              <div class="desc"><h3 class="mb-5" id="svc-4">Surveiller</h3></div>
+            </a>
+          </div>
+          <div class="col-md-4 text-center d-flex ftco-animate">
+            <a href="Projet_N5.html" class="services-1">
+              <span class="icon"><i class="flaticon-flasks"></i></span>
+              <div class="desc"><h3 class="mb-5" id="svc-5">Sécuriser</h3></div>
             </a>
           </div>
           <div class="col-md-4 text-center d-flex ftco-animate">
             <a href="Projet_N6.html" class="services-1">
-              <span class="icon">
-                <i class="flaticon-ideas"></i>
-              </span>
-              <div class="desc">
-                <h3 class="mb-5">Gestion de projet</h3>
-              </div>
+              <span class="icon"><i class="flaticon-ideas"></i></span>
+              <div class="desc"><h3 class="mb-5" id="svc-6">Gestion de projet</h3></div>
             </a>
           </div>
         </div>
       </div>
     </section>
 
-    
-    
     <section class="ftco-section" id="skills-section">
       <div class="container">
         <div class="row justify-content-center pb-5">
           <div class="col-md-12 heading-section text-center ftco-animate">
-            <h1 class="big big-2">Compétences</h1>
-            <h2 class="mb-4">Mes compétences</h2>
-            <p>Je possède plusieurs compétences très utiles qui peuvent apporter un très bon atout à vos demandes.</p>
+            <h1 class="big big-2" id="skills-big">Compétences</h1>
+            <h2 class="mb-4" id="skills-title">Mes compétences</h2>
+            <p id="skills-desc">Je possède plusieurs compétences très utiles qui peuvent apporter un très bon atout à vos demandes.</p>
           </div>
         </div>
         <div class="row">
@@ -269,10 +283,7 @@
             <div class="progress-wrap ftco-animate">
               <h3>Python</h3>
               <div class="progress">
-                <div class="progress-bar color-1" role="progressbar" aria-valuenow="90"
-                 aria-valuemin="0" aria-valuemax="100" style="width:65%">
-                  <span>65%</span>
-                </div>
+                <div class="progress-bar color-1" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" style="width:65%"><span>65%</span></div>
               </div>
             </div>
           </div>
@@ -280,10 +291,7 @@
             <div class="progress-wrap ftco-animate">
               <h3>Shell</h3>
               <div class="progress">
-                <div class="progress-bar color-2" role="progressbar" aria-valuenow="85"
-                 aria-valuemin="0" aria-valuemax="100" style="width:50%">
-                  <span>50%</span>
-                </div>
+                <div class="progress-bar color-2" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:50%"><span>50%</span></div>
               </div>
             </div>
           </div>
@@ -291,10 +299,7 @@
             <div class="progress-wrap ftco-animate">
               <h3>HTML</h3>
               <div class="progress">
-                <div class="progress-bar color-3" role="progressbar" aria-valuenow="95"
-                 aria-valuemin="0" aria-valuemax="100" style="width:70%">
-                  <span>70%</span>
-                </div>
+                <div class="progress-bar color-3" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%"><span>70%</span></div>
               </div>
             </div>
           </div>
@@ -302,10 +307,7 @@
             <div class="progress-wrap ftco-animate">
               <h3>CSS</h3>
               <div class="progress">
-                <div class="progress-bar color-4" role="progressbar" aria-valuenow="90"
-                 aria-valuemin="0" aria-valuemax="100" style="width:65%">
-                  <span>65%</span>
-                </div>
+                <div class="progress-bar color-4" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" style="width:65%"><span>65%</span></div>
               </div>
             </div>
           </div>
@@ -313,10 +315,7 @@
             <div class="progress-wrap ftco-animate">
               <h3>Scilab</h3>
               <div class="progress">
-                <div class="progress-bar color-5" role="progressbar" aria-valuenow="70"
-                 aria-valuemin="0" aria-valuemax="100" style="width:60%">
-                  <span>60%</span>
-                </div>
+                <div class="progress-bar color-5" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:60%"><span>60%</span></div>
               </div>
             </div>
           </div>
@@ -324,26 +323,22 @@
             <div class="progress-wrap ftco-animate">
               <h3>Mathématiques</h3>
               <div class="progress">
-                <div class="progress-bar color-6" role="progressbar" aria-valuenow="80"
-                 aria-valuemin="0" aria-valuemax="100" style="width:80%">
-                  <span>80%</span>
-                </div>
+                <div class="progress-bar color-6" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width:80%"><span>80%</span></div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </section>
- 
 
     <section class="ftco-section ftco-project" id="projects-section">
       <div class="container">
         <div class="row justify-content-center pb-5">
           <div class="col-md-12 heading-section text-center ftco-animate">
-            <h1 class="big big-2">Mes Projets</h1>
-            <h2 class="mb-4">Projet</h2>
-            <p>Voici mes différents projets </p>
-            <p style="color: #FDB827;">CLIC SUR LE PROJET POUR TELECHARGER</p>
+            <h1 class="big big-2" id="projects-big">Mes Projets</h1>
+            <h2 class="mb-4" id="projects-title">Projet</h2>
+            <p id="projects-desc">Voici mes différents projets</p>
+            <p style="color: #FDB827;" id="projects-clic">CLIC SUR LE PROJET POUR TELECHARGER</p>
           </div>
         </div>
         <div class="row">
@@ -351,7 +346,7 @@
             <div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image: url(images/project-4.jpg);">
               <div class="overlay"></div>
               <div class="text text-center p-4">
-                <h3><a href="Projet_N1.html" >Programmation &amp; Petits projets en langage informatique<a/></h3>
+                <h3><a href="Projet_N1.html">Programmation &amp; Petits projets en langage informatique</a></h3>
                 <span style="color: black;">Programmer / Administrer</span>
               </div>
             </div>
@@ -361,21 +356,18 @@
               <div class="overlay"></div>
               <div class="text text-center p-4">
                 <h3><a href="projet/Projet_Sécuriser_VM.zip" download>Sécuriser des infrastructures &amp; Interconnecter des Machines Virtuelles</a></h3>
-                <span style="color: black;">Sécuriser / Connecter / Surveiller </span>
+                <span style="color: black;">Sécuriser / Connecter / Surveiller</span>
               </div>
             </div>
           </div>
-
           <div class="col-md-8">
             <div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image: url(images/project-1.jpg);">
               <div class="overlay"></div>
               <div class="text text-center p-4">
-                <h3><a href="projet/Projet_Circuit.zip" download>Créer des circuits électriques &amp; Créer des circuits afin d'en étudier leurs signaux </a></h3>
-                <span style="color: black;">Connecter / Sécuriser / Administrer </span>
+                <h3><a href="projet/Projet_Circuit.zip" download>Créer des circuits électriques &amp; Créer des circuits afin d'en étudier leurs signaux</a></h3>
+                <span style="color: black;">Connecter / Sécuriser / Administrer</span>
               </div>
             </div>
-
-            
           </div>
           <div class="col-md-4">
             <div class="row">
@@ -384,39 +376,32 @@
                   <div class="overlay"></div>
                   <div class="text text-center p-4">
                     <h3><a href="#">Création d'un Portfolio &amp; Créer son site internet pour y programmer son Portfolio</a></h3>
-                    <span style="color: black;">Programmer / Administrer / Connecter </span>
+                    <span style="color: black;">Programmer / Administrer / Connecter</span>
                   </div>
                 </div>
               </div>
-              
             </div>
           </div>
         </div>
       </div>
     </section>
 
-
     <section class="ftco-section" id="blog-section">
       <div class="container">
         <div class="row justify-content-center mb-5 pb-5">
           <div class="col-md-7 heading-section text-center ftco-animate">
-            <h1 class="big big-2">Journal</h1>
-            <h2 class="mb-4">Mon Journal</h2>
-            <p>Quelques domaines où j'ai appliqué mes compétences</p>
+            <h1 class="big big-2" id="blog-big">Journal</h1>
+            <h2 class="mb-4" id="blog-title">Mon Journal</h2>
+            <p id="blog-desc">Quelques domaines où j'ai appliqué mes compétences</p>
           </div>
         </div>
         <div class="row d-flex">
           <div class="col-md-4 d-flex ftco-animate">
             <div class="blog-entry justify-content-end">
-              <a href="single.html" class="block-20" style="background-image: url('images/image_1.jpg');">
-              </a>
+              <a href="single.html" class="block-20" style="background-image: url('images/image_1.jpg');"></a>
               <div class="text mt-3 float-right d-block">
                 <div class="d-flex align-items-center mb-3 meta">
-                  <p class="mb-0">
-                    <span class="mr-2">Novembre, 2025</span>
-                    
-                    
-                  </p>
+                  <p class="mb-0"><span class="mr-2">Novembre, 2025</span></p>
                 </div>
                 <h3 class="heading"><a href="single.html">Mathématiques appliquées aux réseaux : Du binaire aux complexes.</a></h3>
                 <p>Application des nombres complexes pour l'analyse d'impédance et des séries de Fourier pour le signal. Maîtrise de l'arithmétique binaire et du calcul de sous-réseaux (VLSM)</p>
@@ -425,15 +410,10 @@
           </div>
           <div class="col-md-4 d-flex ftco-animate">
             <div class="blog-entry justify-content-end">
-              <a href="single.html" class="block-20" style="background-image: url('images/image_2.jpg');">
-              </a>
+              <a href="single.html" class="block-20" style="background-image: url('images/image_2.jpg');"></a>
               <div class="text mt-3 float-right d-block">
                 <div class="d-flex align-items-center mb-3 meta">
-                  <p class="mb-0">
-                    <span class="mr-2">Octobre, 2025</span>
-                    
-                    
-                  </p>
+                  <p class="mb-0"><span class="mr-2">Octobre, 2025</span></p>
                 </div>
                 <h3 class="heading"><a href="single.html">Analyse de signaux et transmission de données via Waveforms</a></h3>
                 <p>Étude des signaux électriques pour comprendre comment l'information est codée physiquement. Utilisation de Waveforms pour générer et analyser des circuits logiques simples</p>
@@ -442,15 +422,10 @@
           </div>
           <div class="col-md-4 d-flex ftco-animate">
             <div class="blog-entry">
-              <a href="single.html" class="block-20" style="background-image: url('images/image_3.jpg');">
-              </a>
+              <a href="single.html" class="block-20" style="background-image: url('images/image_3.jpg');"></a>
               <div class="text mt-3 float-right d-block">
                 <div class="d-flex align-items-center mb-3 meta">
-                  <p class="mb-0">
-                    <span class="mr-2">Novembre, 2025</span>
-                    
-                  
-                  </p>
+                  <p class="mb-0"><span class="mr-2">Novembre, 2025</span></p>
                 </div>
                 <h3 class="heading"><a href="single.html">Interconnexion et communication entre machines virtuelles</a></h3>
                 <p>Mise en place d'un réseau privé sous VirtualBox/VMware. Configuration des cartes réseaux en mode 'Réseau interne' pour permettre la communication isolée entre un client et un serveur</p>
@@ -484,7 +459,7 @@
             <div class="block-18">
               <div class="text">
                 <strong class="number" data-number="500">0</strong>
-                <span>Heures de Pratique </span>
+                <span>Heures de Pratique</span>
               </div>
             </div>
           </div>
@@ -492,7 +467,7 @@
             <div class="block-18">
               <div class="text">
                 <strong class="number" data-number="24">0</strong>
-                <span>Veille Technologique </span>
+                <span>Veille Technologique</span>
               </div>
             </div>
           </div>
@@ -504,9 +479,8 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-md-7 ftco-animate text-center">
-            <h2>Architecte <span>Réseau</span> en devenir ... </h2>
-            <p>Futur ingénieur réseau : en route vers la maîtrise des infrastructures de demain</p>
-            
+            <h2 id="hireme-title">Architecte <span>Réseau</span> en devenir ...</h2>
+            <p id="hireme-sub">Futur ingénieur réseau : en route vers la maîtrise des infrastructures de demain</p>
           </div>
         </div>
       </div>
@@ -516,94 +490,80 @@
       <div class="container">
         <div class="row justify-content-center mb-5 pb-3">
           <div class="col-md-7 heading-section text-center ftco-animate">
-            <h1 class="big big-2">Contact</h1>
-            <h2 class="mb-4">Contactez-moi</h2>
-            <p>Prenez contact avec moi pour avoir les meilleurs rendus en termes de compétences en infrastructure réseaux.</p>
+            <h1 class="big big-2" id="contact-big">Contact</h1>
+            <h2 class="mb-4" id="contact-title">Contactez-moi</h2>
+            <p id="contact-desc">Prenez contact avec moi pour avoir les meilleurs rendus en termes de compétences en infrastructure réseaux.</p>
           </div>
         </div>
-
         <div class="row d-flex contact-info mb-5">
           <div class="col-md-6 col-lg-3 d-flex ftco-animate">
             <div class="align-self-stretch box p-4 text-center">
-              <div class="icon d-flex align-items-center justify-content-center">
-                <span class="icon-map-signs"></span>
-              </div>
-              <h3 class="mb-4">Mon adresse</h3>
-              <p>7 Rue Roger Bossaert Grenay, France </p>
+              <div class="icon d-flex align-items-center justify-content-center"><span class="icon-map-signs"></span></div>
+              <h3 class="mb-4" id="contact-addr-title">Mon adresse</h3>
+              <p>7 Rue Roger Bossaert Grenay, France</p>
             </div>
           </div>
           <div class="col-md-6 col-lg-3 d-flex ftco-animate">
             <div class="align-self-stretch box p-4 text-center">
-              <div class="icon d-flex align-items-center justify-content-center">
-                <span class="icon-phone2"></span>
-              </div>
-              <h3 class="mb-4">Téléphone</h3>
-              <p><a href="tel://1234567920">+ 33 47 41 11 25 </a></p>
+              <div class="icon d-flex align-items-center justify-content-center"><span class="icon-phone2"></span></div>
+              <h3 class="mb-4" id="contact-phone-title">Téléphone</h3>
+              <p><a href="tel://+33647411125">+ 33 06 47 41 11 25</a></p>
             </div>
           </div>
           <div class="col-md-6 col-lg-3 d-flex ftco-animate">
             <div class="align-self-stretch box p-4 text-center">
-              <div class="icon d-flex align-items-center justify-content-center">
-                <span class="icon-paper-plane"></span>
-              </div>
-              <h3 class="mb-4">Adresse Email</h3>
+              <div class="icon d-flex align-items-center justify-content-center"><span class="icon-paper-plane"></span></div>
+              <h3 class="mb-4" id="contact-email-title">Adresse Email</h3>
               <a href="mailto:hugopichiche@gmail.com">hugopichiche@gmail.com</a>
             </div>
           </div>
           <div class="col-md-6 col-lg-3 d-flex ftco-animate">
             <div class="align-self-stretch box p-4 text-center">
-              <div class="icon d-flex align-items-center justify-content-center">
-                <span class="icon-globe"></span>
-              </div>
-              <h3 class="mb-4">Mon Site</h3>
-              <p><a href="https://hugopichiche-hash.github.io/LefebvreGithub.github.io/Portefolio-HugoLefebvre/">https://hugopichiche-hash.github.io/LefebvreGithub.github.io/Portefolio-HugoLefebvre/</a></p>
+              <div class="icon d-flex align-items-center justify-content-center"><span class="icon-globe"></span></div>
+              <h3 class="mb-4" id="contact-site-title">Mon Site</h3>
+              <p><a href="https://hugopichiche-hash.github.io/LefebvreGithub.github.io/Portefolio-HugoLefebvre/">hugopichiche-hash.github.io</a></p>
             </div>
           </div>
         </div>
-
-        
         <div class="row no-gutters block-9">
           <div class="col-md-6 order-md-last d-flex">
             <form action="https://formspree.io/f/xbdjwlek" method="POST" class="bg-light p-4 p-md-5 contact-form">
               <div class="form-group">
-                <input type="text" name="nom" class="form-control" placeholder="Votre Nom">
+                <input type="text" id="form-nom-input" name="nom" class="form-control" placeholder="Votre Nom">
               </div>
               <div class="form-group">
-                <input type="email" name="email" class="form-control" placeholder="Votre Email">
+                <input type="email" id="form-email-input" name="email" class="form-control" placeholder="Votre Email">
               </div>
               <div class="form-group">
-                <input type="text" name="sujet" class="form-control" placeholder="Sujet">
+                <input type="text" id="form-sujet-input" name="sujet" class="form-control" placeholder="Sujet">
               </div>
               <div class="form-group">
-                <textarea name="message" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
+                <textarea id="form-msg-input" name="message" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
               </div>
               <div class="form-group">
-                <input type="submit" value="Envoyer" class="btn btn-primary py-3 px-5">
+                <input type="submit" id="form-send-btn" value="Envoyer" class="btn btn-primary py-3 px-5">
               </div>
             </form>
-            
           </div>
-
           <div class="col-md-6 d-flex">
             <div class="img" style="background-image: url(images/logo.png);"></div>
           </div>
         </div>
       </div>
     </section>
-    
 
     <footer class="ftco-footer ftco-section">
       <div class="container">
         <div class="row mb-5">
           <div class="col-md">
             <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2">À propos</h2>
-              <p>Je suis très à l'écoute, motivé et prêt à performer à vos côtés.</p>
+              <h2 class="ftco-heading-2" id="footer-about-title">À propos</h2>
+              <p id="footer-about-text">Je suis très à l'écoute, motivé et prêt à performer à vos côtés.</p>
             </div>
           </div>
           <div class="col-md">
             <div class="ftco-footer-widget mb-4 ml-md-4">
-              <h2 class="ftco-heading-2">Liens</h2>
+              <h2 class="ftco-heading-2" id="footer-links-title">Liens</h2>
               <ul class="list-unstyled">
                 <li><a href="#home-section"><span class="icon-long-arrow-right mr-2"></span>À propos</a></li>
                 <li><a href="#resume-section"><span class="icon-long-arrow-right mr-2"></span>Résumé</a></li>
@@ -614,8 +574,8 @@
             </div>
           </div>
           <div class="col-md">
-             <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2">Services</h2>
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2" id="footer-services-title">Services</h2>
               <ul class="list-unstyled">
                 <li><a href="#" onclick="event.preventDefault();"><span class="icon-long-arrow-right mr-2"></span>Programmer</a></li>
                 <li><a href="#" onclick="event.preventDefault();"><span class="icon-long-arrow-right mr-2"></span>Surveiller</a></li>
@@ -627,11 +587,11 @@
           </div>
           <div class="col-md">
             <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2">Vous avez une Question ?</h2>
+              <h2 class="ftco-heading-2" id="footer-question-title">Vous avez une Question ?</h2>
               <div class="block-23 mb-3">
                 <ul>
                   <li><span class="icon icon-map-marker"></span><span class="text">7 Rue Roger Bossaert Grenay, France</span></li>
-                  <li><a href="#"><span class="icon icon-phone"></span><span class="text">+33 47 41 11 25 </span></a></li>
+                  <li><a href="#"><span class="icon icon-phone"></span><span class="text">+33 47 41 11 25</span></a></li>
                   <li><a href="#"><span class="icon icon-envelope"></span><span class="text">hugo.lefebvre.mr@gmail.com</span></a></li>
                 </ul>
               </div>
@@ -639,73 +599,142 @@
           </div>
         </div>
         <div class="row">
-  <div class="col-md-12 text-center">
-    <p>
-      Copyright &copy;
-      <script>document.write(new Date().getFullYear());</script>
-      Tous droits réservés | Ce modèle a été fait par Lefebvre Hugo avec
-      <i class="icon-heart color-danger" aria-hidden="true"></i>
-      grâce à <a href="https://colorlib.com" target="_blank">Colorlib</a>
-    </p>
-  </div>
-</div>
-
-<div class="row justify-content-center">
-  <div class="col-md-4 text-center">
-    <div class="ftco-footer-widget mb-4">
-      <h2 class="ftco-heading-2">Suivez-moi</h2>
-      <ul class="ftco-footer-social list-unstyled mt-3">
-        <li class="ftco-animate d-inline-block mx-2">
-          <a href="https://www.tiktok.com/@hugo_empir64" target="_blank">
-            <span class="fab fa-tiktok"></span>
-          </a>
-        </li>
-    <li class="ftco-animate d-inline-block mx-2">
-  <a href="https://www.instagram.com/hughuile/" target="_blank">
-    <span class="fab fa-instagram"></span>
-  </a>
-</li>
-        <li class="ftco-animate d-inline-block mx-2">
-          <a href="https://www.linkedin.com/in/hugo-lefebvre-5086b73a2/" target="_blank">
-            <span class="fab fa-linkedin-in"></span>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
-      
-
-
-
+          <div class="col-md-12 text-center">
+            <p>
+              Copyright &copy; <script>document.write(new Date().getFullYear());</script>
+              <span id="footer-copy"> Tous droits réservés | Ce modèle a été fait par Lefebvre Hugo avec</span>
+              <i class="icon-heart color-danger" aria-hidden="true"></i>
+              grâce à <a href="https://colorlib.com" target="_blank">Colorlib</a>
+            </p>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-md-4 text-center">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2" id="footer-follow-title">Suivez-moi</h2>
+              <ul class="ftco-footer-social list-unstyled mt-3">
+                <li class="ftco-animate d-inline-block mx-2">
+                  <a href="https://www.tiktok.com/@hugo_empir64" target="_blank"><span class="fab fa-tiktok"></span></a>
+                </li>
+                <li class="ftco-animate d-inline-block mx-2">
+                  <a href="https://www.instagram.com/hughuile/" target="_blank"><span class="fab fa-instagram"></span></a>
+                </li>
+                <li class="ftco-animate d-inline-block mx-2">
+                  <a href="https://www.linkedin.com/in/hugo-lefebvre-5086b73a2/" target="_blank"><span class="fab fa-linkedin-in"></span></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
     </footer>
-    
-  
 
-  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+    <script src="js/jquery.waypoints.min.js"></script>
+    <script src="js/jquery.stellar.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/aos.js"></script>
+    <script src="js/jquery.animateNumber.min.js"></script>
+    <script src="js/scrollax.min.js"></script>
+    <script src="js/main.js"></script>
 
-  <script src="js/jquery.min.js"></script>
-  <script src="js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/jquery.easing.1.3.js"></script>
-  <script src="js/jquery.waypoints.min.js"></script>
-  <script src="js/jquery.stellar.min.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/jquery.magnific-popup.min.js"></script>
-  <script src="js/aos.js"></script>
-  <script src="js/jquery.animateNumber.min.js"></script>
-  <script src="js/scrollax.min.js"></script>
-  
-  <script src="js/main.js"></script>
+    <script>
+    const translations = {
+      fr: {
+        "nav-accueil":"Accueil","nav-apropos":"À propos","nav-cv":"CV","nav-services":"Services",
+        "nav-competences":"Compétences","nav-projets":"Projets","nav-journal":"Mon Journal","nav-contact":"Mes contacts",
+        "hero-hello":"Bonjour !","hero-subtitle":"Étudiant à l'IUT de Béthune en Réseaux et Télécommunications",
+        "about-big":"À propos","about-title":"À propos de moi",
+        "about-desc":"Je suis une personne engagée, compétente et déterminée à réussir, car ce domaine me passionne et je cherche toujours à me surpasser pour donner le meilleur de moi-même",
+        "about-nom":"Nom :","about-dob":"Date de naissance :","about-addr-label":"Adresse :","about-email-label":"Email :","about-tel-label":"Tél :",
+        "about-projects":"Projets accomplis","btn-dl-cv":"Télécharger mon CV",
+        "resume-big":"Résumé","resume-title":"CV","resume-desc":"J'ai, durant mon parcours, accompli plusieurs types de projets qui m'ont permis d'acquérir de réelles compétences concrètes.",
+        "services-big":"Services","services-title":"Services","services-desc":"Je propose plusieurs types de services qui sont très utiles pour concrétiser vos projets et vos besoins.",
+        "svc-1":"Programmer","svc-2":"Connecter","svc-3":"Administrer","svc-4":"Surveiller","svc-5":"Sécuriser","svc-6":"Gestion de projet",
+        "skills-big":"Compétences","skills-title":"Mes compétences","skills-desc":"Je possède plusieurs compétences très utiles qui peuvent apporter un très bon atout à vos demandes.",
+        "projects-big":"Mes Projets","projects-title":"Projet","projects-desc":"Voici mes différents projets","projects-clic":"CLIC SUR LE PROJET POUR TELECHARGER",
+        "blog-big":"Journal","blog-title":"Mon Journal","blog-desc":"Quelques domaines où j'ai appliqué mes compétences",
+        "hireme-title":"Architecte <span>Réseau</span> en devenir ...","hireme-sub":"Futur ingénieur réseau : en route vers la maîtrise des infrastructures de demain",
+        "contact-big":"Contact","contact-title":"Contactez-moi","contact-desc":"Prenez contact avec moi pour avoir les meilleurs rendus en termes de compétences en infrastructure réseaux.",
+        "contact-addr-title":"Mon adresse","contact-phone-title":"Téléphone","contact-email-title":"Adresse Email","contact-site-title":"Mon Site",
+        "form-nom":"Votre Nom","form-email":"Votre Email","form-sujet":"Sujet","form-msg":"Message","form-send":"Envoyer",
+        "counter-1":"Disponibilité Cible","counter-2":"Projets Techniques","counter-3":"Heures de Pratique","counter-4":"Veille Technologique",
+        "footer-about-title":"À propos","footer-about-text":"Je suis très à l'écoute, motivé et prêt à performer à vos côtés.",
+        "footer-links":"Liens","footer-services":"Services","footer-question":"Vous avez une Question ?","footer-follow":"Suivez-moi",
+        "footer-copy":" Tous droits réservés | Ce modèle a été fait par Lefebvre Hugo avec"
+      },
+      en: {
+        "nav-accueil":"Home","nav-apropos":"About","nav-cv":"Resume","nav-services":"Services",
+        "nav-competences":"Skills","nav-projets":"Projects","nav-journal":"My Journal","nav-contact":"Contact",
+        "hero-hello":"Hello!","hero-subtitle":"Student at IUT de Béthune — Networks & Telecommunications",
+        "about-big":"About","about-title":"About Me",
+        "about-desc":"I am a committed, skilled and determined person. This field is my passion and I always strive to surpass myself and give my best.",
+        "about-nom":"Name:","about-dob":"Date of birth:","about-addr-label":"Address:","about-email-label":"Email:","about-tel-label":"Phone:",
+        "about-projects":"Completed projects","btn-dl-cv":"Download my CV",
+        "resume-big":"Resume","resume-title":"Resume","resume-desc":"Throughout my studies, I have completed several types of projects that allowed me to gain real hands-on skills.",
+        "services-big":"Services","services-title":"Services","services-desc":"I offer several types of services that are very useful to bring your projects and needs to life.",
+        "svc-1":"Programming","svc-2":"Connecting","svc-3":"Administering","svc-4":"Monitoring","svc-5":"Securing","svc-6":"Project Management",
+        "skills-big":"Skills","skills-title":"My Skills","skills-desc":"I have several valuable skills that can be a great asset to your requests.",
+        "projects-big":"My Projects","projects-title":"Projects","projects-desc":"Here are my various projects","projects-clic":"CLICK ON A PROJECT TO DOWNLOAD",
+        "blog-big":"Journal","blog-title":"My Journal","blog-desc":"Some areas where I have applied my skills",
+        "hireme-title":"Aspiring Network <span>Architect</span>","hireme-sub":"Future network engineer: on the road to mastering tomorrow's infrastructures",
+        "contact-big":"Contact","contact-title":"Contact Me","contact-desc":"Get in touch with me to get the best results in network infrastructure skills.",
+        "contact-addr-title":"My Address","contact-phone-title":"Phone","contact-email-title":"Email Address","contact-site-title":"My Website",
+        "form-nom":"Your Name","form-email":"Your Email","form-sujet":"Subject","form-msg":"Message","form-send":"Send",
+        "counter-1":"Target Availability","counter-2":"Technical Projects","counter-3":"Practice Hours","counter-4":"Tech Watch",
+        "footer-about-title":"About","footer-about-text":"I am very attentive, motivated and ready to perform alongside you.",
+        "footer-links":"Links","footer-services":"Services","footer-question":"Got a Question?","footer-follow":"Follow Me",
+        "footer-copy":" All rights reserved | This template was made by Lefebvre Hugo with"
+      }
+    };
 
+    let currentLang = 'fr';
 
+    function applyLang(lang) {
+      const t = translations[lang];
+      const ids = [
+        "nav-accueil","nav-apropos","nav-cv","nav-services","nav-competences","nav-projets","nav-journal","nav-contact",
+        "hero-hello","hero-subtitle",
+        "about-big","about-title","about-desc","about-nom","about-dob","about-addr-label","about-email-label","about-tel-label","about-projects",
+        "resume-big","resume-title","resume-desc",
+        "services-big","services-title","services-desc","svc-1","svc-2","svc-3","svc-4","svc-5","svc-6",
+        "skills-big","skills-title","skills-desc",
+        "projects-big","projects-title","projects-desc","projects-clic",
+        "blog-big","blog-title","blog-desc",
+        "hireme-title","hireme-sub",
+        "contact-big","contact-title","contact-desc","contact-addr-title","contact-phone-title","contact-email-title","contact-site-title",
+        "footer-about-title","footer-about-text","footer-links-title","footer-services-title","footer-question-title","footer-follow-title","footer-copy"
+      ];
+      ids.forEach(id => {
+        const el = document.getElementById(id);
+        if (el && t[id] !== undefined) el.innerHTML = t[id];
+      });
+      // Boutons CV (classe)
+      document.querySelectorAll('.btn-dl-cv').forEach(el => el.textContent = t['btn-dl-cv']);
+      // Placeholders form
+      const attrs = [["form-nom-input","placeholder","form-nom"],["form-email-input","placeholder","form-email"],["form-sujet-input","placeholder","form-sujet"],["form-msg-input","placeholder","form-msg"],["form-send-btn","value","form-send"]];
+      attrs.forEach(([id, attr, key]) => { const el = document.getElementById(id); if (el) el.setAttribute(attr, t[key]); });
+      // Compteurs
+      const spans = document.querySelectorAll('#section-counter .block-18 span');
+      const ckeys = ['counter-1','counter-2','counter-3','counter-4'];
+      spans.forEach((s, i) => { if (ckeys[i]) s.textContent = t[ckeys[i]]; });
+      // Bouton langue
+      document.getElementById('lang-btn').textContent = lang === 'fr' ? 'EN' : 'FR';
+      document.documentElement.lang = lang;
+    }
 
+    function toggleLang() {
+      currentLang = currentLang === 'fr' ? 'en' : 'fr';
+      applyLang(currentLang);
+    }
+    </script>
 
-
-
-
-                  
   </body>
 </html>
